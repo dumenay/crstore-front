@@ -8,19 +8,23 @@
       >
         <v-list>
           <v-list-item
-            prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
-            subtitle="sandra_a88@gmailcom"
-            title="Sandra Adams"
+            prepend-avatar="https://pbs.twimg.com/media/EiJaqcCWAAAgckA.jpg"
+            subtitle="nobru@loud.com"
+            title="Xapeleta"
           ></v-list-item>
         </v-list>
 
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-home" to="/" title="Home" value="starred"></v-list-item>
-          <v-list-item to="variaveis" prepend-icon="mdi-google" title="Variavei" value="myfiles"></v-list-item>
-          <v-list-item prepend-icon="mdi-account-multiple" title="Shared with me" value="shared"></v-list-item>
-          <v-list-item prepend-icon="mdi-star" title="Starred" value="starred"></v-list-item>
+          <v-list-item to="/" prepend-icon="mdi-home" title="Home" value="home"></v-list-item>
+          <v-list-item to="/users" prepend-icon="mdi-card-account-details" title="Users" value="users"></v-list-item>
+          <v-list-item to="/categories" prepend-icon="mdi-view-list" title="Categories" value="categories"></v-list-item>
+          <v-list-item to="/products" prepend-icon="mdi-food" title="Products" value="products"></v-list-item>
+          <v-list-item to="/coupons" prepend-icon="mdi-ticket-percent" title="Coupons" value="coupons"></v-list-item>
+          <v-list-item to="/orders" prepend-icon="mdi-tag-plus" title="Orders" value="orders"></v-list-item>
+          <v-list-item to="/ordersProducts" prepend-icon="mdi-food-fork-drink" title="Orders Products" value="ordersProducts"></v-list-item>
+          <v-list-item to="/payments" prepend-icon="mdi-cash-multiple" title="Payments" value="payments"></v-list-item>
         </v-list>
       </v-navigation-drawer>
       <v-main style="height: 100vh; background-color: black;" theme="dark">
