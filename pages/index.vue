@@ -1,38 +1,78 @@
 <template>
-    <v-app-bar>
+    <v-app>
+        <Header/>
+    <v-container
+    style="overflow-y: scroll; max-height: 100dvh; width: 100dvw; margin-top: 20px;">
         <v-row>
-            <v-spacer></v-spacer>
-            <v-spacer></v-spacer>
-            <v-col cols="auto">
-                <v-btn @click="" class="mx-2" variant="text">
-                    Home
-                </v-btn>
-                <v-btn class="mx-2" variant="text">
-                    Categorias
-                </v-btn>
-                <v-btn class="mx-2" variant="text">
-                    Produtos
-                </v-btn>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-col>
-                <v-btn class="mx-3" variant="outlined">
-                    Login
-                </v-btn>
-                <v-btn class="mx-3" variant="outlined">
-                    Registro
-                </v-btn>
-            </v-col>
+        <CardProdutos
+            :items="items"
+        />
         </v-row>
-    </v-app-bar>
-    <v-body>
-        <v-row>
-        <CardProdutos></CardProdutos>
-        </v-row>
-    </v-body>
+    </v-container>
+    </v-app>
 </template>
 
 <script>
+import CardProdutos from '~/components/CardProdutos.vue';
+
 export default {
+  data: () => {
+    return {
+      dialog: false,
+      valor: 0,
+      ativo: false,
+      loading: true,
+      textoUsuario: null,
+      products: {
+        id: null,
+        name: null,
+        price: null,
+        image: null,
+        description: null,
+        idCategory: null
+      },
+      headers: [
+        {
+          title: 'ID',
+          key: 'id'
+        },
+        {
+          title: 'Name',
+          key: 'name'
+        },
+        {
+          title: 'Price',
+          key: 'price'
+        },
+        {
+          title: 'Description',
+          key: 'description'
+        },
+        {
+          title: 'Category',
+          key: 'idCategory'
+        },
+        {
+          title: 'Actions',
+          key: 'actions',
+          sortable: false
+        },
+      ],
+      items: [],
+    }
+  },
+
+  async created(){
+    await this.getItems();
+  },
+
+
+  methods: {
+   async getItems() {
+      const response = await this.$api.get('/products');
+      this.items = response.response;
+      this.loading = false;
+    }
+  }
 }
 </script>

@@ -131,8 +131,11 @@ export default {
       textoUsuario: null,
       users: {
         id: null,
+        username: null,
+        passwordHash: null,
         name: null,
         email: null,
+        cpf: null,
         phone: null,
         role: null
       },
@@ -164,7 +167,6 @@ export default {
         },
       ],
       items: [],
-      users: [],
     }
   },
 
@@ -203,6 +205,7 @@ export default {
         const response = await this.$api.patch(`/users/${this.users.id}`, this.users);
       }
       else{
+        console.log(this.users)
         await this.$api.post('/users', this.users);
       }
       this.resetUsers()

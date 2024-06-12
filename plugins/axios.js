@@ -12,11 +12,11 @@ export default defineNuxtPlugin(() => {
     }
   });
 
-  api.interceptors.request.use((config) => {
-    const token = localStorage.getItem('forget-key') || '';
-    config.defaults.headers.common['Authorization'] =  `Bearer ${token}`
-    return config
-  });
+  // api.interceptors.request.use((config) => {
+  //   const token = localStorage.getItem('forget-key') || '';
+  //   config.defaults.headers.common['Authorization'] =  `Bearer ${token}`
+  //   return config
+  // });
 
   api.interceptors.response.use(function (response) {
     return response.data;

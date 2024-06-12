@@ -39,13 +39,12 @@
         </v-row>
         <v-row>
           <v-col>
-            <v-text-field
-              variant="outlined"
+            <v-combobox
               label="Type"
-              placeholder="Type"
+              :items="['%', 'R$']"
+              variant="outlined"
               v-model="cupons.type"
-            >
-            </v-text-field>
+            ></v-combobox>
           </v-col>
           <v-col>
             <v-text-field

@@ -1,7 +1,8 @@
 <template>
     <v-card
+      v-for="(item, i) in items"
       class="mx-auto my-12"
-      max-width="330"
+      width="350"
     >
       <template v-slot:loader="{ isActive }">
         <v-progress-linear
@@ -13,13 +14,13 @@
   
       <v-img
         height="200"
-        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+        :src= "item.image"
         cover
-      ></v-img>
+      />
   
-      <v-card-item>
-        <v-card-title>Nome Produto</v-card-title>
-      </v-card-item>
+        <v-card-text
+        style="font-size: 22px; font-weight: bold;">
+        {{  item.name  }}</v-card-text>
   
       <v-card-text>
         <v-row
@@ -40,19 +41,19 @@
         </v-row>
   
         <div class="my-4 text-subtitle-1">
-          Valor
+          R$ {{ item.price.replace(".", ",") }}
         </div>
   
-        <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+        <div>{{ item.description }}</div>
       </v-card-text>
   
       <v-divider class="mx-4 mb-1"></v-divider>
   
       <v-card-actions>
         <v-btn
-          text="Reserve"
+          text="Adicionar ao Carrinho"
           block
-          variant="outlined"
+          variant="tonal"
           @click=""
         ></v-btn>
       </v-card-actions>
@@ -65,6 +66,10 @@ export default {
     loading: false,
     selection: 1,
   }),
+
+  props: {
+    items: []
+  },
 
   methods: {
     
